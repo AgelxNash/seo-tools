@@ -1,0 +1,30 @@
+{
+    "name": "agelxnash/seo-tools",
+    "homepage": "http://blog.agel-nash.ru",
+    "keywords": [
+        "laravel",
+        "admin",
+        "administrator",
+        "crud",
+        "template"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Agel_Nash",
+            "email": "iam@agel-nash.ru"
+        }
+    ],
+    "suggest": {
+        "artesaos/seotools": "SEO tools",
+        "laravelrus/localized-carbon": "For use LocalizedDateTrait"
+    },
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "AgelxNash\\SEOTools": "src/"
+        }
+    }
+}
