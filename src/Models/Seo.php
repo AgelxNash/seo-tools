@@ -1,10 +1,10 @@
-<?php namespace App\Models;
+<?php namespace AgelxNash\SEOTools\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Seo
- * @package App\Models
+ * @package AgelxNash\SEOTools\Models
  *
  * @property string $title SEO title
  * @property string $description META описание страницы
@@ -50,7 +50,7 @@ class Seo extends Model {
 	 */
 	public function keywords()
 	{
-		return $this->belongsToMany('App\Models\Keyword');
+		return $this->belongsToMany('\AgelxNash\SEOTools\Models\Keyword');
 	}
 
 	/**

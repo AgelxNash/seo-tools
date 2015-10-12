@@ -1,10 +1,10 @@
-<?php namespace App\Models;
+<?php namespace AgelxNash\SEOTools\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Keyword
- * @package App\Models
+ * @package AgelxNash\SEOTools\Models
  * @property string $name Ключевое слово
  * @property int $seo_id Связь с \App\Models\Seo
  * @property \Carbon\Carbon $created_at Дата создания ключа
@@ -23,6 +23,6 @@ class Keyword extends Model {
 	 */
 	public function seo()
 	{
-		return $this->belongsToMany('\App\Models\Seo')->withTimestamps();
+		return $this->belongsToMany('\AgelxNash\SEOTools\Models\Seo')->withTimestamps();
 	}
 }

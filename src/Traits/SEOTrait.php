@@ -33,7 +33,7 @@ trait SEOTrait{
 	 */
 	public function seo()
 	{
-		return $this->morphOne('App\Models\Seo', 'seoble', 'document_type', 'document_id');
+		return $this->morphOne('\AgelxNash\SEOTools\Models\Seo', 'seoble', 'document_type', 'document_id');
 	}
 
 	public function getState(){
