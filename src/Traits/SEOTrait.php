@@ -22,10 +22,11 @@ trait SEOTrait{
 		}
 		if ($this->getKey()) {
 			$val['priority'] = str_replace(",", ".", array_get($val, 'priority', ''));
-			$keywords = array_get($val, 'keywords', '', 'is_array');
+			$keywords = array_get($val, 'keywords', array());
 			unset($val['keywords']);
 			$this->seo()->exists() ? $this->seo()->update($val) : $this->seo = $this->seo()->create($val);
-			$this->seo()->keywords = $keywords;
+			$seo = $this->seo()->first();
+			$seo->keywords = $keywords;
 		}
 	}
 

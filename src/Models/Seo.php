@@ -32,7 +32,9 @@ class Seo extends Model {
 		'frequency',
 		'robots',
 		'state',
-		'h1'
+		'h1',
+
+		'keywords'
 	);
 
 	/**
