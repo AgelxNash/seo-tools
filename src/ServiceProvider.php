@@ -2,6 +2,7 @@
 
 use Illuminate\Support\ServiceProvider as BaseProvider;
 use AgelxNash\SEOTools\Interfaces\SeoInterface;
+use Illuminate\Database\Eloquent\Model;
 
 class ServiceProvider extends BaseProvider
 {
@@ -18,14 +19,13 @@ class ServiceProvider extends BaseProvider
 	}
 
 	public function registerEvents() {
-		$this->app['events']->listen('eloquent.saved*', function ($model) {
+		$this->app['events']->listen('eloquent.saved*', function (Model $model) {
 			if($model instanceof SeoInterface && !$model->seo()->exists()){
 				$model->seo()->create($model->getDefaultSeoFields());
 			}
 		});
-
-		$this->app['events']->listen("eloquent.deleting*", function ($model) {
-			if($model instanceof SeoInterface && !$model->seo()->exists()) {
+		$this->app['events']->listen('eloquent.deleting*', function (Model $model) {
+			if($model instanceof SeoInterface && $model->seo()->exists()) {
 				$model->seo()->delete();
 			}
 			return true;
