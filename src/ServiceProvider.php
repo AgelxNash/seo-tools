@@ -1,12 +1,13 @@
 <?php namespace AgelxNash\SEOTools;
 
 use Illuminate\Support\ServiceProvider as BaseProvider;
+use AgelxNash\SEOTools\Interfaces\SeoInterface;
 
 class ServiceProvider extends BaseProvider
 {
 	public function register()
 	{
-
+		$this->registerEvents();
 	}
 
 	public function boot()
@@ -14,6 +15,21 @@ class ServiceProvider extends BaseProvider
 		$this->publishes([
 			__DIR__.'/../database/migrations/' => database_path('migrations')
 		], 'migrations');
+	}
+
+	public function registerEvents() {
+		$this->app['events']->listen('eloquent.saved*', function ($model) {
+			if($model instanceof SeoInterface && !$model->seo()->exists()){
+				$model->seo()->create($model->getDefaultSeoFields());
+			}
+		});
+
+		$this->app['events']->listen("eloquent.deleting*", function ($model) {
+			if($model instanceof SeoInterface && !$model->seo()->exists()) {
+				$model->seo()->delete();
+			}
+			return true;
+		});
 	}
 
 }
