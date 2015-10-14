@@ -41,7 +41,7 @@ class Seo extends Model {
 	 * @return \Illuminate\Database\Eloquent\Relations\MorphTo
 	 */
 	public function seoble(){
-		return $this->morphTo();
+		return $this->morphTo('seoble', 'document_type', 'document_id');
 	}
 
 	/**************
