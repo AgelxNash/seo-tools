@@ -44,7 +44,7 @@ trait SEOTrait{
 	 */
 	protected function getSeoProperty($key){
 		if($this->seo && !empty($this->seo->$key)) {
-			$out = $this->seo->state;
+			$out = $this->seo->$key;
 		}else{
 			$out = $this->getDefaultSeoFields();
 			$out = array_get($out, $key, null);
