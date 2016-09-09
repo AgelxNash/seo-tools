@@ -9,14 +9,18 @@ trait SEOTrait{
 	 * @return array
 	 */
 	public function getDefaultSeoFields(array $fields = array()){
-		return property_exists($this, 'defaultSeoFields') ? array_merge($this->defaultSeoFields, $fields) : $fields;
+        $out = property_exists($this, 'defaultSeoFields') ? array_merge($this->defaultSeoFields, $fields) : $fields;
+        if($this->exists){
+            $out = array_merge($out, $this->seo->toArray());
+        }
+        return $out;
 	}
 
 	/**
 	 * @param array $val
 	 */
 	public function setSeoAttribute(array $val){
-		$isNew = !$this->exists;
+        $isNew = !$this->exists;
 		if ( $isNew ) {
 			$this->save();
 		}
