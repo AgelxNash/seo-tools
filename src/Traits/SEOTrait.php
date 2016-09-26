@@ -10,7 +10,7 @@ trait SEOTrait{
 	 */
 	public function getDefaultSeoFields(array $fields = array()){
         $out = property_exists($this, 'defaultSeoFields') ? array_merge($this->defaultSeoFields, $fields) : $fields;
-        if($this->exists){
+        if($this->exists && $this->seo){
             $out = array_merge($out, $this->seo->toArray());
         }
         return $out;
