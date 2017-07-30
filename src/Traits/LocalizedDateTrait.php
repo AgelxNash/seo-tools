@@ -52,17 +52,17 @@ trait LocalizedDateTrait{
 
 	public function getTextDateTimeCreatedAtAttribute()
 	{
-		return $this->takeCarbonAttributes("created_at", '%d %f %Y, %H:%I:%S');
+		return $this->takeCarbonAttributes("created_at", '%d %f %Y, %H:%M:%S');
 	}
 
 	public function getTextDateTimeUpdatedAtAttribute()
 	{
-		return $this->takeCarbonAttributes("updated_at", '%d %f %Y, %H:%I:%S');
+		return $this->takeCarbonAttributes("updated_at", '%d %f %Y, %H:%M:%S');
 	}
 
 	public function getTextDateTimeDeletedAtAttribute()
 	{
-		return $this->takeCarbonAttributes("deleted_at", '%d %f %Y, %H:%I:%S');
+		return $this->takeCarbonAttributes("deleted_at", '%d %f %Y, %H:%M:%S');
 	}
 
 	public function getHumanCreatedAtAttribute()
